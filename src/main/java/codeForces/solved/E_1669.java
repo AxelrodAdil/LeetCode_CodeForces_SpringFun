@@ -1,32 +1,31 @@
-package codeForces.unsolved;
+package codeForces.solved;
 
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
-public class H_1669 {
+public class E_1669 {
 
     static void solve(FastReader sc) {
-        int n = sc.nextInt(), k = sc.nextInt();
-        int[] array = new int[n];
+        long n = sc.nextLong();
+        long count = 0;
+        Map<String, Long> hashMap = new HashMap<>();
         for (int i = 0; i < n; i++) {
-            array[i] = sc.nextInt();
-        }
-        int[] bits = new int[31];
-        for (int value : array) {
-            for (int j = 0; j < bits.length; j++) {
-                if ((value & 1 << j) != 0) {
-                    bits[j]++;
+            String tempString = sc.nextLine();
+            for (char j = 'a'; j <= 'k'; j++) {
+                if (tempString.charAt(1) != j) {
+                    count += hashMap.getOrDefault(tempString.charAt(0) + String.valueOf(j), 0L);
                 }
             }
-        }
-        int res = 0;
-        for (int i = 30; i >= 0; i--) {
-            if (n - bits[i] <= k) {
-                k -= n - bits[i];
-                res += 1 << i;
+            for (char j = 'a'; j <= 'k'; j++) {
+                if (tempString.charAt(0) != j) {
+                    count += hashMap.getOrDefault(String.valueOf(j) + tempString.charAt(1), 0L);
+                }
             }
+            hashMap.put(tempString, hashMap.getOrDefault(tempString, 0L) + 1);
         }
-        System.out.println(res);
+        System.out.println(count);
     }
 
     public static void main(String[] args) {
