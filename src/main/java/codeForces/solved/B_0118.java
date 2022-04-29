@@ -3,7 +3,7 @@ package codeForces.solved;
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class B_118 {
+public class B_0118 {
 
     static void solve(FastReader sc) {
         int n = sc.nextInt();
