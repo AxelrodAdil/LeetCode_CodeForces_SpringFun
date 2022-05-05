@@ -1,12 +1,31 @@
-package codeForces;
+package codeForces.solved;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Template {
+public class A_1675 {
 
     static void solve(FastReader sc) {
-
+        long a = sc.nextLong();
+        long b = sc.nextLong();
+        long c = sc.nextLong();
+        long x = sc.nextLong();
+        long y = sc.nextLong();
+        byte bool = 1;
+        if (a + b + c < x + y) {
+            bool = 0;
+        } else if (a < x) {
+            long temp = c - (x - a);
+            if (temp < 0 || temp + b < y) {
+                bool = 0;
+            }
+        } else if (b < y) {
+            long temp = c - (y - b);
+            if (temp < 0 || temp + a < x) {
+                bool = 0;
+            }
+        }
+        System.out.println(bool == 1 ? "YES" : "NO");
     }
 
     public static void main(String[] args) {

@@ -1,12 +1,52 @@
-package codeForces;
+package codeForces.solved;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Template {
+public class B_1675 {
 
     static void solve(FastReader sc) {
-
+        int n = sc.nextInt();
+//        int[] array = setArray(n, sc);
+        long[] array = new long[n];
+        boolean bool = true;
+        for (int i = 0; i < n; i++) {
+            array[i] = sc.nextLong();
+        }
+        for (int i = 1; i < n; i++) {
+            if (array[i - 1] >= array[i]) {
+                bool = false;
+                break;
+            }
+        }
+        if (bool) {
+            System.out.println(0);
+        } else {
+            boolean newBool = true;
+            long count = 0;
+            for (int i = array.length - 1; i >= 1; i--) {
+                boolean tempBool = true;
+                while (tempBool) {
+                    if (array[i - 1] < array[i] || array[i - 1] == 0) {
+                        tempBool = false;
+                    } else {
+                        array[i - 1] = array[i - 1] / 2;
+                        count++;
+                    }
+                }
+            }
+            for (int i = 1; i < n; i++) {
+                if (array[i - 1] >= array[i]) {
+                    newBool = false;
+                    break;
+                }
+            }
+            if (newBool) {
+                System.out.println(count);
+            } else {
+                System.out.println(-1);
+            }
+        }
     }
 
     public static void main(String[] args) {

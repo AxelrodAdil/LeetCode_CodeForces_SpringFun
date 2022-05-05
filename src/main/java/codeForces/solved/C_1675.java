@@ -1,12 +1,32 @@
-package codeForces;
+package codeForces.solved;
 
 import java.io.*;
 import java.util.StringTokenizer;
 
-public class Template {
+public class C_1675 {
 
     static void solve(FastReader sc) {
-
+        String str = sc.nextLine();
+        int n = str.length();
+        if (n == 1) {
+            System.out.println(1);
+            return;
+        }
+        int a = n - 1;
+        int b = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '0') {
+                a = i;
+                break;
+            }
+        }
+        for (int i = n - 1; i >= 0; i--) {
+            if (str.charAt(i) == '1') {
+                b = i;
+                break;
+            }
+        }
+        System.out.println(Math.abs(a - b) + 1);
     }
 
     public static void main(String[] args) {
