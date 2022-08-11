@@ -3,6 +3,7 @@ package spring.test.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @Table(name = "USER_INFO")
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class User {
 
     // the keyword USER is reserved keyword in PostgreSQL

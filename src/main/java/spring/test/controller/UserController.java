@@ -15,9 +15,11 @@ public class UserController {
 
     @GetMapping
     public List<?> getAllUsers() {
-        // ApiResponse --- later
-        List<?> list = userService.getAllUsers();
-        System.out.println(list);
-        return list;
+        return userService.getAllUsers();
+    }
+
+    @GetMapping("/functional")
+    public List<?> getAllUsersByFunctionalInterface() {
+        return userService.getAllUsersByFunctionalInterface();
     }
 }
