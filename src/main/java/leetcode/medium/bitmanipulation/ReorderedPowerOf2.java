@@ -16,6 +16,10 @@ public class ReorderedPowerOf2 {
     }
 
     public boolean reorderedPowerOf2(int n) {
+        /*
+        Runtime: 2 ms, faster than 68.67% of Java online submissions for Reordered Power of 2.
+        Memory Usage: 40.9 MB, less than 71.33% of Java online submissions for Reordered Power of 2.
+        */
         int[] arr = getIntArray(n);
         for (int i = 0; i < 32; i++) {
             if (Arrays.equals(arr, getIntArray(1 << i))) {
