@@ -3,13 +3,21 @@ package codeForces;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
-public class Template {
+public class G_1722 {
 
     static Scanner sc = new Scanner(System.in);
 
     static void solve() {
-//        int n = Integer.parseInt(sc.next());
-
+        int n = Integer.parseInt(sc.next());
+        int temp = 0;
+        for (int i = 3; i <= n; i++) {
+            temp ^= i;
+        }
+        System.out.print((1 << 25) + temp + " " + (1 << 25) + " ");
+        for (int i = 3; i <= n; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {

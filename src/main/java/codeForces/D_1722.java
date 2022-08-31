@@ -1,9 +1,8 @@
 package codeForces;
 
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
-public class Template {
+public class D_1722 {
 
     static Scanner sc = new Scanner(System.in);
 
@@ -15,7 +14,9 @@ public class Template {
     public static void main(String[] args) {
 //        int t = 1;
         int t = Integer.parseInt(sc.next());
-        IntStream.range(0, t).forEach(s -> solve());
+        for (int s = 0; s < t; s++) {
+            solve();
+        }
     }
 
     // TEMPLATES
