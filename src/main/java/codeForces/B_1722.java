@@ -29,7 +29,6 @@ public class B_1722 {
         }
     }
 
-
     // TEMPLATES
     public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 }
