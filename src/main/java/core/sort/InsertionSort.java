@@ -1,7 +1,5 @@
 package core.sort;
 
-import java.util.Arrays;
-
 public class InsertionSort {
 
     private static int findElement(Integer[] arr, Integer element) {
