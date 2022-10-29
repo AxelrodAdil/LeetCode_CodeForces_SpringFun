@@ -15,9 +15,13 @@ public class HeapSort {
         int largest = i;
         int l = 2 * i + 1;
         int r = 2 * i + 2;
+//        int mid = 3 * i + 3;
         if (l < N && arr[l] > arr[largest]) {
             largest = l;
         }
+//        if (mid < N && arr[mid] > arr[largest]) {
+//            largest = mid;
+//        }
         if (r < N && arr[r] > arr[largest]) {
             largest = r;
         }
@@ -41,6 +45,8 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
+        long timeMillis = System.currentTimeMillis();
+
         HeapSort heapSort = new HeapSort();
         List<Integer> arrInteger = IntStream.range(0, 1_0).mapToObj(i -> (int) (Math.random() * 1_000)).collect(Collectors.toList());
         int[] arr = arrInteger.stream().mapToInt(Integer::intValue).toArray();
@@ -48,5 +54,7 @@ public class HeapSort {
         System.out.println("--------------------------------------");
         heapSort.sortArray(arr);
         heapSort.printArray(arr);
+
+        System.out.println((double) (System.currentTimeMillis() - timeMillis));
     }
 }
