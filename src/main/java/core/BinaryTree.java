@@ -84,8 +84,14 @@ public class BinaryTree {
     }
 
     private TreeNode deleteNode(TreeNode treeNode, int key) {
+        /*
+        Runtime 0 ms
+        Beats 100%
+        Memory 49.7 MB
+        Beats 40.16%
+         */
         if (treeNode == null) return null;
-        if (treeNode.val == key) treeNode = delete(treeNode, key);
+        if (treeNode.val == key) treeNode = delete(treeNode);
         if (treeNode != null) {
             if (treeNode.val < key) treeNode.right = deleteNode(treeNode.right, key);
             else treeNode.left = deleteNode(treeNode.left, key);
@@ -93,7 +99,7 @@ public class BinaryTree {
         return treeNode;
     }
 
-    private TreeNode delete(TreeNode treeNode, int key) {
+    private TreeNode delete(TreeNode treeNode) {
         if (treeNode.left == null && treeNode.right == null) return null;
         if (treeNode.left == null) return treeNode.right;
         if (treeNode.right == null) return treeNode.left;
@@ -104,19 +110,19 @@ public class BinaryTree {
         currentTreeNode.left = treeNode.left;
         return treeNode.right;
     }
-//
-//    private List<Integer> getPreorderTraversalList(TreeNode treeNode) {
-//        List<Integer> answerList = new ArrayList<>();
-//        preorderRecursive(treeNode, answerList);
-//        return answerList;
-//    }
-//
-//    private void preorderRecursive(TreeNode treeNode, List<Integer> answerList) {
-//        if (treeNode == null) return;
-//        answerList.add(treeNode.val);
-//        preorderRecursive(treeNode.left, answerList);
-//        preorderRecursive(treeNode.right, answerList);
-//    }
+
+    private List<Integer> getPreorderTraversalList(TreeNode treeNode) {
+        List<Integer> answerList = new ArrayList<>();
+        preorderRecursive(treeNode, answerList);
+        return answerList;
+    }
+
+    private void preorderRecursive(TreeNode treeNode, List<Integer> answerList) {
+        if (treeNode == null) return;
+        answerList.add(treeNode.val);
+        preorderRecursive(treeNode.left, answerList);
+        preorderRecursive(treeNode.right, answerList);
+    }
 
     public static void main(String[] args) {
         BinaryTree binaryTree = new BinaryTree();
@@ -138,7 +144,7 @@ public class BinaryTree {
         binaryTree.isExist(treeNode, 25);
         System.out.println(existingFlag);
         System.out.println("=======================================");
-//        System.out.println(binaryTree.getPreorderTraversalList(treeNode));
+        System.out.println(binaryTree.getPreorderTraversalList(treeNode));
         int deletedElement = 3;
         binaryTree.isExist(treeNode, deletedElement);
         TreeNode tempTreeNodeAfterDeletion = null;
@@ -146,8 +152,8 @@ public class BinaryTree {
             tempTreeNodeAfterDeletion = binaryTree.deleteNode(treeNode, deletedElement);
             System.out.println(tempTreeNodeAfterDeletion.val);
         }
-//        System.out.println("=======================================");
-//        System.out.println(binaryTree.getPreorderTraversalList(tempTreeNodeAfterDeletion));
-//        System.out.println("=======================================");
+        System.out.println("=======================================");
+        System.out.println(binaryTree.getPreorderTraversalList(tempTreeNodeAfterDeletion));
+        System.out.println("=======================================");
     }
 }
