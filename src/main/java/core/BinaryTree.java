@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 class TreeNode {
     int val;
@@ -112,9 +113,29 @@ public class BinaryTree {
     }
 
     private List<Integer> getPreorderTraversalList(TreeNode treeNode) {
+        /*
+        Runtime 0 ms
+        Beats 100%
+        Memory 40.4 MB
+        Beats 90.70%
+         */
         List<Integer> answerList = new ArrayList<>();
-        preorderRecursive(treeNode, answerList);
+//        preorderRecursive(treeNode, answerList);
+        preorderNonRecursive(treeNode, answerList);
         return answerList;
+    }
+
+    private void preorderNonRecursive(TreeNode treeNode, List<Integer> answerList) {
+        Stack<TreeNode> treeNodeStack = new Stack<>();
+        treeNodeStack.push(treeNode);
+        while (!treeNodeStack.isEmpty()) {
+            TreeNode node = treeNodeStack.pop();
+            if (node != null) {
+                answerList.add(node.val);
+                treeNodeStack.push(node.right);
+                treeNodeStack.push(node.left);
+            }
+        }
     }
 
     private void preorderRecursive(TreeNode treeNode, List<Integer> answerList) {
@@ -139,21 +160,21 @@ public class BinaryTree {
         binaryTree.insertTreeNode(treeNode, 15);
 
         System.out.println("=======================================");
-        System.out.println(binaryTree.isBalanced(treeNode));
-        System.out.println("=======================================");
-        binaryTree.isExist(treeNode, 25);
-        System.out.println(existingFlag);
+//        System.out.println(binaryTree.isBalanced(treeNode));
+//        System.out.println("=======================================");
+//        binaryTree.isExist(treeNode, 25);
+//        System.out.println(existingFlag);
         System.out.println("=======================================");
         System.out.println(binaryTree.getPreorderTraversalList(treeNode));
-        int deletedElement = 3;
-        binaryTree.isExist(treeNode, deletedElement);
-        TreeNode tempTreeNodeAfterDeletion = null;
-        if (existingFlag) {
-            tempTreeNodeAfterDeletion = binaryTree.deleteNode(treeNode, deletedElement);
-            System.out.println(tempTreeNodeAfterDeletion.val);
-        }
-        System.out.println("=======================================");
-        System.out.println(binaryTree.getPreorderTraversalList(tempTreeNodeAfterDeletion));
-        System.out.println("=======================================");
+//        int deletedElement = 3;
+//        binaryTree.isExist(treeNode, deletedElement);
+//        TreeNode tempTreeNodeAfterDeletion = null;
+//        if (existingFlag) {
+//            tempTreeNodeAfterDeletion = binaryTree.deleteNode(treeNode, deletedElement);
+//            System.out.println(tempTreeNodeAfterDeletion.val);
+//        }
+//        System.out.println("=======================================");
+//        System.out.println(binaryTree.getPreorderTraversalList(tempTreeNodeAfterDeletion));
+//        System.out.println("=======================================");
     }
 }
