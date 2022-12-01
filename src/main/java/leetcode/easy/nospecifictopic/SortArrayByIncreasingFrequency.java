@@ -25,7 +25,6 @@ public class SortArrayByIncreasingFrequency {
             sorted[i] = nums[i];
         }
         Arrays.sort(sorted, (a, b) -> {
-            System.out.println(a + " " + b);
             if (Objects.equals(hashMap.get(a), hashMap.get(b))) {
                 return b.compareTo(a);
             }
