@@ -1,4 +1,4 @@
-package leetcode.medium.hashmap;
+package leetcode.december2022;
 
 import java.util.*;
 import java.util.stream.IntStream;
