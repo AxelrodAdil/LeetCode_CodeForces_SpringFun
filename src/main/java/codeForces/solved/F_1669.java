@@ -3,6 +3,8 @@ package codeForces.solved;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class F_1669 {
 
@@ -10,10 +12,7 @@ public class F_1669 {
 
     static void solve() {
         int n = sc.nextInt();
-        long[] array = new long[n];
-        for (int i = 0; i < n; i++) {
-            array[i] = sc.nextInt();
-        }
+        long[] array = IntStream.range(0, n).mapToLong(i -> sc.nextInt()).toArray();
         long aliceSum = array[0], bobSum = array[n - 1];
         if (n == 1) {
             System.out.println(0);
@@ -42,12 +41,9 @@ public class F_1669 {
     //Вердикт: TIME_LIMIT_EXCEEDED    Ввод 1 200000   7 49 30 48 17 4 104 3 23 6 41
     static void solveNeedTime() {
         int n = sc.nextInt();
-        ArrayList<Integer> arr = new ArrayList<>();
+        ArrayList<Integer> arr = IntStream.range(0, n).mapToObj(i -> sc.nextInt()).collect(Collectors.toCollection(ArrayList::new));
         ArrayList<Integer> arrAns1 = new ArrayList<>();
         ArrayList<Integer> arrAns2 = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            arr.add(sc.nextInt());
-        }
         int temp = 0;
         for (int i = 0; i < n - 1; i++) {
             temp += arr.get(i);
@@ -61,9 +57,7 @@ public class F_1669 {
         int ans = 0;
         for (int i = 0; i < arrAns2.size(); i++) {
             for (int j = arrAns1.size() - 1 - i; j >= 0; j--) {
-                if (arrAns1.get(j).equals(arrAns2.get(i))) {
-                    ans = i + j + 2;
-                }
+                if (arrAns1.get(j).equals(arrAns2.get(i))) ans = i + j + 2;
             }
         }
         System.out.println(ans);
@@ -71,10 +65,8 @@ public class F_1669 {
 
     public static void main(String[] args) {
         int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-//            solveNeedTime();
-            solve();
-        }
+        // solveNeedTime();
+        IntStream.range(0, t).forEachOrdered(s -> solve());
     }
 
     static class FastReader {

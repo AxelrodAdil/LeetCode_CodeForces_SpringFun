@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class E_1669 {
 
@@ -32,9 +33,7 @@ public class E_1669 {
         FastReader sc = new FastReader();
 //        int t = 1;
         int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-            solve(sc);
-        }
+        IntStream.range(0, t).mapToObj(s -> sc).forEachOrdered(E_1669::solve);
     }
 
     static class FastReader {

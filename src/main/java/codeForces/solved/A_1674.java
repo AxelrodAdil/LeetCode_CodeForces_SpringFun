@@ -2,30 +2,21 @@ package codeForces.solved;
 
 import java.io.*;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class A_1674 {
 
     static void solve(FastReader sc) {
         int a = sc.nextInt();
         int b = sc.nextInt();
-        if (a > b) {
-            System.out.println("0 0");
-        } else {
-            if (b % a != 0) {
-                System.out.println("0 0");
-            } else {
-                System.out.println(1 + " " + b / a);
-            }
-        }
+        System.out.println(a > b ? "0 0" : b % a != 0 ? "0 0" : 1 + " " + b / a);
     }
 
     public static void main(String[] args) {
         FastReader sc = new FastReader();
 //        int t = 1;
         int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-            solve(sc);
-        }
+        IntStream.range(0, t).mapToObj(s -> sc).forEachOrdered(A_1674::solve);
     }
 
     static class FastReader {

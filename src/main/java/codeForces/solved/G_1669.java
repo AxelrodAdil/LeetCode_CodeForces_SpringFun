@@ -2,6 +2,7 @@ package codeForces.solved;
 
 import java.io.*;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class G_1669 {
 
@@ -18,10 +19,10 @@ public class G_1669 {
         int n = sc.nextInt();
         int m = sc.nextInt();
         char[][] array = new char[n][m];
-        for (int i = 0; i < n; i++) {
+        IntStream.range(0, n).forEachOrdered(i -> {
             char[] chars = sc.nextLine().toCharArray();
             System.arraycopy(chars, 0, array[i], 0, m);
-        }
+        });
         for (int i = 0; i < m; i++) {
             int last = n - 1;
             for (int j = n - 1; j >= 0; j--) {
@@ -43,9 +44,7 @@ public class G_1669 {
         FastReader sc = new FastReader();
 //        int t = 1;
         int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-            solve(sc);
-        }
+        IntStream.range(0, t).mapToObj(s -> sc).forEachOrdered(G_1669::solve);
     }
 
     static class FastReader {

@@ -15,11 +15,7 @@ public class A_1722 {
         }
         HashMap<Character, Integer> hashMap = new HashMap<>();
         for (char i : str.toCharArray()) {
-            if (hashMap.containsKey(i)) {
-                hashMap.put(i, hashMap.get(i) + 1);
-            } else {
-                hashMap.put(i, 1);
-            }
+            hashMap.put(i, hashMap.containsKey(i) ? hashMap.get(i) + 1 : 1);
         }
         for (char i : "Timur".toCharArray()) {
             if (!hashMap.containsKey(i) || hashMap.get(i) == 0) {

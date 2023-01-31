@@ -1,24 +1,18 @@
 package codeForces.solved;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class H_1669 {
 
     static void solve(FastReader sc) {
         int n = sc.nextInt(), k = sc.nextInt();
-        int[] array = new int[n];
-        for (int i = 0; i < n; i++) {
-            array[i] = sc.nextInt();
-        }
+        int[] array = IntStream.range(0, n).map(i -> sc.nextInt()).toArray();
         int[] bits = new int[31];
-        for (int value : array) {
-            for (int j = 0; j < bits.length; j++) {
-                if ((value & 1 << j) != 0) {
-                    bits[j]++;
-                }
-            }
-        }
+        Arrays.stream(array).forEachOrdered(value -> IntStream.range(0, bits.length)
+                .filter(j -> (value & 1 << j) != 0).forEachOrdered(j -> bits[j]++));
         int res = 0;
         for (int i = 30; i >= 0; i--) {
             if (n - bits[i] <= k) {
@@ -33,9 +27,7 @@ public class H_1669 {
         FastReader sc = new FastReader();
 //        int t = 1;
         int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-            solve(sc);
-        }
+        IntStream.range(0, t).mapToObj(s -> sc).forEachOrdered(H_1669::solve);
     }
 
     static class FastReader {

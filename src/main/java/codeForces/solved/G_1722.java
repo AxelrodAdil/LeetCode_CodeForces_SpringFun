@@ -9,14 +9,9 @@ public class G_1722 {
 
     static void solve() {
         int n = Integer.parseInt(sc.next());
-        int temp = 0;
-        for (int i = 3; i <= n; i++) {
-            temp ^= i;
-        }
+        int temp = IntStream.rangeClosed(3, n).reduce(0, (a, b) -> a ^ b);
         System.out.print((1 << 25) + temp + " " + (1 << 25) + " ");
-        for (int i = 3; i <= n; i++) {
-            System.out.print(i + " ");
-        }
+        IntStream.rangeClosed(3, n).mapToObj(i -> i + " ").forEachOrdered(System.out::print);
         System.out.println();
     }
 

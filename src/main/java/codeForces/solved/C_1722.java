@@ -20,11 +20,8 @@ public class C_1722 {
         for (int i = 0; i < 3; i++) {
             int temp = 0;
             for (int j = 0; j < n; j++) {
-                if (map.get(arr[i][j]) == 2) {
-                    temp += 1;
-                } else if (map.get(arr[i][j]) == 1) {
-                    temp += 3;
-                }
+                if (map.get(arr[i][j]) == 2) temp += 1;
+                else if (map.get(arr[i][j]) == 1) temp += 3;
             }
             System.out.print(temp + " ");
         }

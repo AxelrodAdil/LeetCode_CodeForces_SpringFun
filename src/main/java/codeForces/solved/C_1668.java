@@ -2,16 +2,12 @@ package codeForces.solved;
 
 import java.io.*;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class C_1668 {  // A_1667
 
     private static boolean isIncreasing(int[] a) {
-        for (int i = 1; i < a.length; i++) {
-            if (a[i - 1] >= a[i]) {
-                return false;
-            }
-        }
-        return true;
+        return IntStream.range(1, a.length).noneMatch(i -> a[i - 1] >= a[i]);
     }
 
     static void solve(FastReader sc) {
@@ -24,10 +20,7 @@ public class C_1668 {  // A_1667
             System.out.println(2);
             return;
         }
-        int[] a = new int[n];
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
-        }
+        int[] a = IntStream.range(0, n).map(i -> sc.nextInt()).toArray();
         if (isIncreasing(a)) {
             System.out.println(a.length - 1);
             return;
@@ -48,9 +41,7 @@ public class C_1668 {  // A_1667
                 total += x;
                 current = x * a[j];
             }
-            if (total < bestOption) {
-                bestOption = total;
-            }
+            if (total < bestOption) bestOption = total;
         }
         System.out.println(bestOption);
     }
@@ -59,9 +50,7 @@ public class C_1668 {  // A_1667
         FastReader sc = new FastReader();
         int t = 1;
 //        int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-            solve(sc);
-        }
+        IntStream.range(0, t).mapToObj(s -> sc).forEachOrdered(C_1668::solve);
     }
 
     static class FastReader {

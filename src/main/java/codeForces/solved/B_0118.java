@@ -2,33 +2,26 @@ package codeForces.solved;
 
 import java.io.*;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class B_0118 {
 
     static void solve(FastReader sc) {
         int n = sc.nextInt();
-        for (int i = -n; i <= n; i++) {
+        IntStream.rangeClosed(-n, n).forEachOrdered(i -> {
             int top = n - Math.abs(i);
-            for (int j = 0; j < Math.abs(i); j++) {
-                System.out.print("  ");
-            }
-            for (int j = 0; j < top; j++) {
-                System.out.print(j + " ");
-            }
-            for (int j = top; j > 0; j--) {
-                System.out.print(j + " ");
-            }
+            IntStream.range(0, Math.abs(i)).mapToObj(j -> "  ").forEachOrdered(System.out::print);
+            IntStream.range(0, top).mapToObj(j -> j + " ").forEachOrdered(System.out::print);
+            IntStream.iterate(top, j -> j > 0, j -> j - 1).mapToObj(j -> j + " ").forEachOrdered(System.out::print);
             System.out.println(0);
-        }
+        });
     }
 
     public static void main(String[] args) {
         FastReader sc = new FastReader();
         int t = 1;
 //        int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-            solve(sc);
-        }
+        IntStream.range(0, t).mapToObj(s -> sc).forEachOrdered(B_0118::solve);
     }
 
     static class FastReader {

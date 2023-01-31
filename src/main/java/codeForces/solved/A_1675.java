@@ -2,6 +2,7 @@ package codeForces.solved;
 
 import java.io.*;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class A_1675 {
 
@@ -32,9 +33,7 @@ public class A_1675 {
         FastReader sc = new FastReader();
 //        int t = 1;
         int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-            solve(sc);
-        }
+        IntStream.range(0, t).mapToObj(s -> sc).forEachOrdered(A_1675::solve);
     }
 
 

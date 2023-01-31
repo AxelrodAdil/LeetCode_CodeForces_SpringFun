@@ -2,20 +2,13 @@ package codeForces.solved;
 
 import java.io.*;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class A_1669 {
 
     static void solve(FastReader sc, PrintWriter out) {
         int rating = sc.nextInt();
-        if (rating <= 1399) {
-            out.println("Division 4");
-        } else if (rating <= 1599) {
-            out.println("Division 3");
-        } else if (rating <= 1899) {
-            out.println("Division 2");
-        } else {
-            out.println("Division 1");
-        }
+        out.println(rating <= 1399 ? "Division 4" : rating <= 1599 ? "Division 3" : rating <= 1899 ? "Division 2" : "Division 1");
     }
 
     public static void main(String[] args) {
@@ -23,9 +16,7 @@ public class A_1669 {
         PrintWriter out = new PrintWriter(System.out);
 //        int t = 1;
         int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-            solve(sc, out);
-        }
+        IntStream.range(0, t).forEachOrdered(s -> solve(sc, out));
         out.close();
     }
 

@@ -3,17 +3,14 @@ package codeForces.solved;
 import java.io.*;
 import java.util.Arrays;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 public class B_1668 {
 
     static void solve(FastReader sc) {
         int n = sc.nextInt();
         int m = sc.nextInt();
-        int[] array = new int[n];
-        for (int i = 0; i < n; i++) {
-            array[i] = sc.nextInt();
-        }
-//        int min = 1 << 15;
+        int[] array = IntStream.range(0, n).map(i -> sc.nextInt()).toArray();
         Arrays.sort(array);
         int limit = m - array[array.length - 1];
         if (limit <= 0) {
@@ -23,9 +20,7 @@ public class B_1668 {
         int count = 0;
         byte bool = 1;
         for (int i = array.length - 1; i >= 0; i--) {
-            if (count >= limit) {
-                bool = 0;
-            }
+            if (count >= limit) bool = 0;
             count += array[i] + 1;
         }
         System.out.println(bool == 1 ? "YES" : "NO");
@@ -35,9 +30,7 @@ public class B_1668 {
         FastReader sc = new FastReader();
 //        int t = 1;
         int t = sc.nextInt();
-        for (int s = 0; s < t; s++) {
-            solve(sc);
-        }
+        IntStream.range(0, t).mapToObj(s -> sc).forEachOrdered(B_1668::solve);
     }
 
     static class FastReader {
