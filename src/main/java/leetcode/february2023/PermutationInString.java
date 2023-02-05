@@ -7,7 +7,7 @@ public class PermutationInString {
 
     // https://leetcode.com/problems/permutation-in-string/
 
-    public static boolean checkInclusion(String s1, String s2) {
+    public boolean checkInclusion(String s1, String s2) {
         /*
         Runtime 7 ms
         Beats 65.18%
