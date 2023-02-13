@@ -4,12 +4,31 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class BeautifulLine {
 
     // 13.02.2023 - B
 
     private static int getMaxBeauty(String s, int k) {
+        var map = new HashMap<Character, Integer>();
+        int maxLen = 0, start = 0, maxChanges = 0;
+        for (int end = 0; end < s.length(); end++) {
+            var c = s.charAt(end);
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            maxChanges = Math.max(maxChanges, map.get(c));
+            while (end - start + 1 - maxChanges > k) {
+                var startChar = s.charAt(start);
+                map.put(startChar, map.get(startChar) - 1);
+                start++;
+            }
+            maxLen = Math.max(maxLen, end - start + 1);
+        }
+        return maxLen;
+    }
+
+    private static int getMaxBeautyButTL(String s, int k) {
+        // TL: 9 test
         var maxLen = 0;
         for (int i = 0; i < s.length(); i++) {
             var j = i;
