@@ -7,30 +7,24 @@ public class SourceOrMatterOfControl {
     // 14.02.2023 - D
 
     private static void printResult(int k, int ansRow, int seat) {
-        System.out.println(k % 2 == 0 ? ansRow + " " + seat : seat % 2 == 0 ? ansRow + " " + 1 : ansRow - 1 + " " + 2);
+        System.out.println(k % 2 == 0 ? ansRow + " " + seat : seat % 2 == 0 ? ansRow + " " + 1 : ansRow + " " + 2);
     }
 
     private static void solve(int n, int k, int row, int seat) {
         var pTicket = (row - 1) * 2 + seat;
-        var ticket = k < pTicket ? (pTicket % k == 0 ? k : pTicket % k) : pTicket;
-        System.out.printf("HERE-0 [%d-%d]%n", pTicket, ticket);
         int left = pTicket - k, right = pTicket + k;
         if (left <= 0 && right > n) {
             System.out.println(-1);
             return;
         }
-        System.out.printf("HERE-00 [%d-%d]%n", left, right);
-        var ansLeftRow = (left - seat + 2) / 2;
+        var ansLeftRow = left % 2 == 0 ? left / 2 : (int) Math.ceil(((double) left - seat + 2) / 2);
         ansLeftRow = ansLeftRow == 0 ? 1 : ansLeftRow;
-        var ansRightRow = (int) Math.ceil(((double) right - seat + 2) / 2);
+        var ansRightRow = right % 2 == 0 ? right / 2 : (int) Math.ceil(((double) right - seat + 2) / 2);
         if (ansLeftRow <= 0 || ansLeftRow == row || left == 0) {
-            System.out.printf("HERE-1 [%d-%d], [%d-%d]%n", left, ansLeftRow, right, ansRightRow);
             printResult(k, ansRightRow, seat);
         } else if (ansRightRow > n || right > n) {
-            System.out.printf("HERE-2 [%d-%d], [%d-%d]%n", left, ansLeftRow, right, ansRightRow);
             printResult(k, ansLeftRow, seat);
         } else {
-            System.out.printf("HERE-3 [%d-%d], [%d-%d]%n", left, ansLeftRow, right, ansRightRow);
             printResult(k, row - ansLeftRow >= ansRightRow - row ? ansRightRow : ansLeftRow, seat);
         }
     }
@@ -41,19 +35,24 @@ public class SourceOrMatterOfControl {
         int k = sc.nextInt();
         int row = sc.nextInt();
         int seat = sc.nextInt();
-
-        // WA: 8 test (Later)
         solve(n, k, row, seat);
     }
 
     /*
+      11
+      3
+      4
+      2
 
+      3 1
       =====
 
       11
       2
       5
       2
+
+      4 2
       =====
 
       16
@@ -112,6 +111,5 @@ public class SourceOrMatterOfControl {
 
       10 2
       =====
-
      */
 }
