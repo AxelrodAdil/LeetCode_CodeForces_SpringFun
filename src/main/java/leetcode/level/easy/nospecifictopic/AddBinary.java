@@ -14,24 +14,16 @@ public class AddBinary {
 //                return "0";
 //            }
 //        }
-        StringBuilder sb = new StringBuilder();
-        int aLength = a.length() - 1;
-        int bLength = b.length() - 1;
-        int keepInMind = 0;
+        var sb = new StringBuilder();
+        int aLength = a.length() - 1, bLength = b.length() - 1, keepInMind = 0;
         while (aLength >= 0 || bLength >= 0) {
             int sum = keepInMind;
-            if (aLength >= 0) {
-                sum += a.charAt(aLength--) - '0';
-            }
-            if (bLength >= 0) {
-                sum += b.charAt(bLength--) - '0';
-            }
+            if (aLength >= 0) sum += a.charAt(aLength--) - '0';
+            if (bLength >= 0) sum += b.charAt(bLength--) - '0';
             sb.append(sum % 2);
             keepInMind = sum / 2;
         }
-        if (keepInMind > 0) {
-            sb.append(keepInMind);
-        }
+        if (keepInMind > 0) sb.append(keepInMind);
         return sb.reverse().toString();
     }
 
