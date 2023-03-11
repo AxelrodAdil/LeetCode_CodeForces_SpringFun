@@ -1,4 +1,4 @@
-package leetcode.march.yandex;
+package leetcode.march2023.yandex;
 
 import java.util.Scanner;
 import java.util.Stack;

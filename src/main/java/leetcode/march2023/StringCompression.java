@@ -1,4 +1,4 @@
-package leetcode.march;
+package leetcode.march2023;
 
 public class StringCompression {
 

@@ -1,4 +1,4 @@
-package leetcode.march.kaspi;
+package leetcode.march2023.kaspi;
 
 import java.util.Scanner;
 import java.util.stream.IntStream;
